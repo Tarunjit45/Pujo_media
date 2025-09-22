@@ -1,0 +1,227 @@
+{
+  "info": {
+    "name": "Pujomedia API Collection",
+    "description": "API collection for Pujomedia - Social Ranking Platform for Puja Photos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "firebaseToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Verify Firebase Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"{{firebaseToken}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/verify-token",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "verify-token"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Photos",
+      "item": [
+        {
+          "name": "Get Photos Feed",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebaseToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/photos?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "photos"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Upload Photo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebaseToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "description": "Image file (JPG/PNG)"
+                },
+                {
+                  "key": "caption",
+                  "value": "Beautiful Puja photo! 🙏✨",
+                  "type": "text"
+                },
+                {
+                  "key": "location",
+                  "value": "Kolkata, West Bengal",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/photos/upload",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "photos", "upload"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Engagement",
+      "item": [
+        {
+          "name": "Like Photo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebaseToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/engagement/like/photo_id_here",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "engagement", "like", "photo_id_here"]
+            }
+          }
+        },
+        {
+          "name": "Comment on Photo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebaseToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Beautiful photo! 🙏\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/engagement/comment/photo_id_here",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "engagement", "comment", "photo_id_here"]
+            }
+          }
+        },
+        {
+          "name": "Share Photo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebaseToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/engagement/share/photo_id_here",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "engagement", "share", "photo_id_here"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Leaderboard",
+      "item": [
+        {
+          "name": "Get Top Photos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/leaderboard/photos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaderboard", "photos"]
+            }
+          }
+        },
+        {
+          "name": "Get Top Users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/leaderboard/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaderboard", "users"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Backend Health",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
