@@ -6,20 +6,20 @@
 
 ## 📌 Overview
 
-A high-performance JavaScript application engineered for scalability and quality.
+A high-performance application engineered by Tarunjit Biswas for quality and scalability.
 
 ## ✨ Key Features & Architecture
 
-- **High-Performance Architecture:** Engineered using modern `JavaScript` best practices.
-- **Modular & Scalable Design:** Structured code organization for easy maintenance and deployment.
+- **High-Performance Codebase:** Built using `JavaScript` and modern engineering principles.
+- **Modular & Scalable Design:** Structured directory tree for seamless development and deployment.
 
-## 🛠️ Tech Stack & Technologies
+## 🛠️ Tech Stack & Dependencies
 
-- **Primary Language:** `JavaScript`
-- **Frameworks & Libraries:** FastAPI, JavaScript
-- **Deployment Target:** Vercel Edge / Cloud Infrastructure
+- **Core Language:** `JavaScript`
+- **Libraries & Tools:** FastAPI, JavaScript
+- **Deployment Infrastructure:** Vercel Edge / Cloud Services
 
-## 📁 Project Directory Structure
+## 📁 Architecture & File Layout
 
 ```text
 Pujo_media/
@@ -38,16 +38,16 @@ Pujo_media/
 ├── CONTRIBUTING.md
 ├── DATABASE_CLEANUP_GUIDE.md
 ├── DEPLOYMENT.md
-└── ... [additional source files]
+└── ... [additional codebase files]
 ```
 
-## 🚀 Getting Started
+## 🚀 Quickstart & Installation
 
 ### Prerequisites
 - Node.js (v18.0.0 or higher)
-- npm or yarn
+- npm or yarn package manager
 
-### Installation & Local Setup
+### Setup Instructions
 
 1. **Clone the repository:**
    ```bash
@@ -60,12 +60,12 @@ Pujo_media/
    npm install
    ```
 
-3. **Start development server:**
+3. **Launch development server:**
    ```bash
    npm run dev
    ```
 
-## 📜 License & Author
+## 📜 Author & License
 
-Engineered with ❤️ by **[Tarunjit Biswas](https://github.com/Tarunjit45)**.  
-Released under the **MIT License**.
+Architected & Developed by **[Tarunjit Biswas](https://github.com/Tarunjit45)**.  
+Distributed under the **MIT License**.
