@@ -1,71 +1,76 @@
-# 🚀 Pujo_media
+# 🏆 Pujo Media — Full-Stack Festival Competition & AI Scoring Engine
 
-![Language](https://img.shields.io/badge/Language-JavaScript-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Production-Active-success?style=for-the-badge)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js%20%7C%20Express-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL%20%7C%20Prisma-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.prisma.io/)
+[![Python](https://img.shields.io/badge/AI%20Service-FastAPI%20%7C%20PyTorch-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org/)
+[![AWS S3](https://img.shields.io/badge/Storage-AWS%20S3-FF9900?style=for-the-badge&logo=amazon-s3&logoColor=white)](https://aws.amazon.com/s3/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## 📌 Overview
+**Pujo Media** is a production full-stack competition management and media voting platform for Kolkata Durga Puja festivals. It pairs an enterprise **Node.js/Prisma backend** with an automated **Python AI computer vision scoring microservice** (`ai-scoring/`) to evaluate pandal aesthetics, idol craftsmanship, lighting installations, and crowd management.
 
-A high-performance application engineered by Tarunjit Biswas for quality and scalability.
+---
 
-## ✨ Key Features & Architecture
+## 🛠️ Microservice Architecture
 
-- **High-Performance Codebase:** Built using `JavaScript` and modern engineering principles.
-- **Modular & Scalable Design:** Structured directory tree for seamless development and deployment.
+```
++-------------------------------------------------------------+
+|                    Client Web & Mobile Apps                 |
++-------------------------------------------------------------+
+                              |
+                              v  REST API
++-------------------------------------------------------------+
+|                 Node.js / Express Backend                   |
+|     - PostgreSQL with Prisma ORM (`@prisma/client`)         |
+|     - Media uploads to AWS S3 (`@aws-sdk/client-s3`)        |
+|     - Authentication via Firebase Admin SDK                 |
+|     - Rate limiting, Helmet security headers, Postman suite |
++-------------------------------------------------------------+
+                              |
+                              v  Internal RPC / HTTP
++-------------------------------------------------------------+
+|             Python AI Scoring Service (`ai-scoring/`)       |
+|     - Computer Vision model scoring aesthetic quality       |
+|     - Evaluates lighting contrast & crowd safety            |
+|     - Containerized via Dockerfile                          |
++-------------------------------------------------------------+
+```
 
-## 🛠️ Tech Stack & Dependencies
+---
 
-- **Core Language:** `JavaScript`
-- **Libraries & Tools:** FastAPI, JavaScript
-- **Deployment Infrastructure:** Vercel Edge / Cloud Services
-
-## 📁 Architecture & File Layout
+## 📁 Repository Layout
 
 ```text
 Pujo_media/
-├── .env
-├── .env.example
-├── .env.local
-├── .github
-├── .github/ISSUE_TEMPLATE
-├── .github/ISSUE_TEMPLATE/bug_report.md
-├── .github/ISSUE_TEMPLATE/feature_request.md
-├── .github/PULL_REQUEST_TEMPLATE.md
-├── .github/workflows
-├── .github/workflows/ci.yml
-├── .gitignore
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── DATABASE_CLEANUP_GUIDE.md
-├── DEPLOYMENT.md
-└── ... [additional codebase files]
+├── backend/                  # Express REST API, Prisma schemas, S3 controllers
+├── ai-scoring/               # Python AI vision scoring microservice & Dockerfile
+├── Pujomedia_API_Collection  # Complete Postman API testing suite
+├── DATABASE_CLEANUP_GUIDE.md # Database maintenance and migration protocol
+├── DEPLOYMENT.md             # Production cloud deployment guide
+├── SETUP.md                  # Development environment setup
+├── LICENSE                   # MIT License
+└── README.md
 ```
 
-## 🚀 Quickstart & Installation
+---
 
-### Prerequisites
-- Node.js (v18.0.0 or higher)
-- npm or yarn package manager
+## 🚀 Getting Started
 
-### Setup Instructions
+### 1. Setup Backend
+```bash
+cd backend
+npm install
+npx prisma migrate dev
+npm start
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Tarunjit45/Pujo_media.git
-   cd Pujo_media
-   ```
+### 2. Setup AI Scoring Microservice
+```bash
+cd ai-scoring
+pip install -r requirements.txt
+python main.py
+```
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+---
 
-3. **Launch development server:**
-   ```bash
-   npm run dev
-   ```
-
-## 📜 Author & License
-
-Architected & Developed by **[Tarunjit Biswas](https://github.com/Tarunjit45)**.  
-Distributed under the **MIT License**.
+## 📄 License
+This project is licensed under the [MIT License](LICENSE).
